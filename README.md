@@ -3,18 +3,17 @@
 ### Flask
 
 ```bash
-flask --app garden run
+flask --app apps/alpha/app run
 ```
-
 
 ### Docker
 
 ```bash
 # build
-docker build -t garden .
+docker build apps/alpha -t alpha
 
 # run
-docker container run -p 127.0.0.1:5000:5000 -t garden
+docker container run -p 127.0.0.1:5000:5000 -t alpha
 ```
 
 ### minikube and Docker
@@ -32,16 +31,20 @@ eval $(minikube docker-env)
 docker ps
 # should seem minikube processes
 
+# set app name
+APP=alpha
+
+# build in minikube
 docker build -t $APP apps/$APP
 
 # deploy service with local docker image
-kubectl apply -f deployments/garden.yaml
+kubectl apply -f deployments/$APP.yaml
 
 # check if pod is running
 kubectl get pods
 
 # in a separate terminal run:
-minikube service garden --url
+minikube service $APP --url
 # then the URL of the service can be curl'ed to test service availability
 curl http://127.0.0.1:64652
  ```

@@ -5,7 +5,7 @@ app = flask.Flask(__name__)
 @app.route('/')
 def home():
    return flask.jsonify({
-        'name': 'garden',
+        'name': 'charlie',
         'version': 1,
     })
 
