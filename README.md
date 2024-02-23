@@ -32,7 +32,7 @@ eval $(minikube docker-env)
 docker ps
 # should seem minikube processes
 
-docker build -t garden:v20240222.1 apps/garden
+docker build -t $APP apps/$APP
 
 # deploy service with local docker image
 kubectl apply -f deployments/garden.yaml

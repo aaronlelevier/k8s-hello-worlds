@@ -11,11 +11,11 @@ RUN apt-get -y install \
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
-COPY garden.py /app/garden.py
+COPY app.py /app/app.py
 
 RUN pip install -r requirements.txt
 
-CMD [ "python", "garden.py" ]
+CMD [ "python", "app.py" ]
 
 # TODO: is this needed?
 EXPOSE 5000
