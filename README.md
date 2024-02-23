@@ -48,3 +48,17 @@ minikube service $APP --url
 # then the URL of the service can be curl'ed to test service availability
 curl http://127.0.0.1:64652
  ```
+
+### minikube and kubectl commands
+
+```bash
+# run command on pod
+kubectl exec -it $POD -- cat /etc/resolv.conf
+
+# ssh to pod
+# ref: https://kubernetes.io/docs/tasks/debug/debug-application/get-shell-running-container/
+kubectl exec --stdin --tty $POD -- /bin/bash
+
+# port forward
+kubectl port-forward $POD 5000
+```

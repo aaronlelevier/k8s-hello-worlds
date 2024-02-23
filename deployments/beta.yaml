@@ -1,39 +1,40 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: alpha
+  name: beta
   labels:
-    app: alpha
-    service: alpha
+    app: beta
+    service: beta
 spec:
   ports:
   - port: 5000
     name: http
   selector:
-    app: alpha
+    app: beta
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: alpha
+  name: beta
   labels:
-    app: alpha
+    app: beta
     version: v1
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: alpha
+      app: beta
       version: v1
   template:
     metadata:
       labels:
-        app: alpha
+        app: beta
         version: v1
     spec:
+      hostname: beta
       containers:
-      - name: alpha
-        image: alpha:v3
+      - name: beta
+        image: beta:v2
         resources:
           requests:
             cpu: "100m"
