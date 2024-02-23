@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: garden
-        image: garden:latest
+        image: garden:v20240222.1
         resources:
           requests:
             cpu: "100m"

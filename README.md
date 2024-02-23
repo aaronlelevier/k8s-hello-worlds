@@ -28,7 +28,11 @@ minikube start
 # set to build docker images inside of minikube VM
 eval $(minikube docker-env)
 
-docker build -t garden .
+# verify docker commands are running inside of minikube
+docker ps
+# should seem minikube processes
+
+docker build -t garden:v20240222.1 apps/garden
 
 # deploy service with local docker image
 kubectl apply -f deployments/garden.yaml
